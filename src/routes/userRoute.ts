@@ -1,5 +1,5 @@
-import { Elysia } from "elysia";
-import { baseUrlUser } from "../config/axios";
+import { Elysia, t } from "elysia";
+import { baseUrlUser, baseUrlAuth } from "../config/axios";
 
 export const userRoute = new Elysia().group('/user', (app) =>
     app
@@ -7,6 +7,24 @@ export const userRoute = new Elysia().group('/user', (app) =>
             try {
                 const response = await baseUrlUser.get("/user");
                 return response.data;
+            } catch (error) {
+                console.error(error);
+            }
+        })
+
+        .post("/signup", async ({ body }: any) => {
+            try {
+                const user = await baseUrlUser.post("/user", body);
+                const auth = await baseUrlAuth.post("/auth/signup", {
+                    user_id: user?.data?.id,
+                    email: body.email,
+                    password: body.password
+                });
+
+                return {
+                    user: user.data,
+                    auth: auth.data,
+                };
             } catch (error) {
                 console.error(error);
             }
