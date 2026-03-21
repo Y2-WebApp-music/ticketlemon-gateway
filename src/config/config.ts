@@ -1,5 +1,4 @@
 const port = Number(process.env.PORT)
-const baseUrl = process.env.BASE_URL
 const authServiceUrl = process.env.AUTH_SERVICE_URL
 const userServiceUrl = process.env.USER_SERVICE_URL
 
@@ -15,7 +14,6 @@ if (!userServiceUrl) {
 
 export const config = {
     port,
-    baseUrl,
     authServiceUrl,
     userServiceUrl
 };

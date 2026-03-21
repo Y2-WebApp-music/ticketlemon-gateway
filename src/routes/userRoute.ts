@@ -29,4 +29,18 @@ export const userRoute = new Elysia().group('/user', (app) =>
                 console.error(error);
             }
         })
+
+        .delete("/:id", async ({ params }) => {
+            try {
+                const user = await baseUrlUser.delete(`/user/${params.id}`);
+                const auth = await baseUrlAuth.delete(`/auth/${params.id}`);
+                return {
+                    message: "User deleted",
+                    user: user.data,
+                    auth: auth.data,
+                };
+            } catch (error) {
+                console.error(error);
+            }
+        })
 )
