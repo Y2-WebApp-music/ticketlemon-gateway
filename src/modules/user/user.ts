@@ -11,10 +11,10 @@ export class UserService {
     }
   };
 
-  async deleteUser({ params }: any) {
+  async deleteUser({ params: { id } }: any) {
     try {
-      const user = await baseUrlUser.delete(`/user/${params.id}`);
-      const auth = await baseUrlAuth.delete(`/auth/${params.id}`);
+      const user = await baseUrlUser.delete(`/user/${id}`);
+      const auth = await baseUrlAuth.delete(`/auth/${id}`);
       return {
         message: "User deleted",
         user: user.data,
