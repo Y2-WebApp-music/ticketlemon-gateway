@@ -8,3 +8,7 @@ export const baseUrlAuth = axios.create({
 export const baseUrlUser = axios.create({
   baseURL: config.userServiceUrl,
 });
+
+export const baseUrlCore = axios.create({
+  baseURL: config.coreServiceUrl,
+});

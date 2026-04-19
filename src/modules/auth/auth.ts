@@ -1,7 +1,8 @@
 import { baseUrlUser, baseUrlAuth } from "../../config/axios";
+import { handleError } from "../../config/error";
 
 export class AuthService {
-  async signUp({ body }: any) {
+  async signUp({ body, status }: any) {
     try {
       const user = await baseUrlUser.post("/user", body);
       const auth = await baseUrlAuth.post("/auth/signup", {
@@ -15,18 +16,16 @@ export class AuthService {
         auth: auth.data,
       };
     } catch (error) {
-      console.error(error);
-      return error;
+      return handleError(error, status);
     }
   };
 
-  async login({ body }: any) {
+  async login({ body, status }: any) {
     try {
       const auth = await baseUrlAuth.post("/auth/login", body);
       return auth.data;
     } catch (error) {
-      console.error(error);
-      return error;
+      return handleError(error, status);
     }
   };
 };
