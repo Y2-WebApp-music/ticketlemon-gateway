@@ -31,7 +31,7 @@ export class TicketService {
 
   async updateTicket({ params: { id }, body, status }: any) {
     try {
-      const response = await baseUrlCore.put(`/ticket/${id}`, body);
+      const response = await baseUrlCore.patch(`/ticket/${id}`, body);
       return response.data;
     } catch (error) {
       return handleError(error, status);

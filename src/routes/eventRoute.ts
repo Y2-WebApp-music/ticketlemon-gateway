@@ -8,6 +8,6 @@ export const eventRoute = new Elysia().group("/api", (app) =>
     .get("/event", eventService.getAllEvents)
     .get("/event/:id", eventService.getEventById)
     .post("/event", eventService.createEvent)
-    .put("/event/:id", eventService.updateEvent)
+    .patch("/event/:id", eventService.updateEvent)
     .delete("/event/:id", eventService.deleteEvent)
 );

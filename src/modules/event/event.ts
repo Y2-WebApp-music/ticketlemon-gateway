@@ -31,7 +31,7 @@ export class EventService {
 
   async updateEvent({ params: { id }, body, status }: any) {
     try {
-      const response = await baseUrlCore.put(`/event/${id}`, body);
+      const response = await baseUrlCore.patch(`/event/${id}`, body);
       return response.data;
     } catch (error) {
       return handleError(error, status);

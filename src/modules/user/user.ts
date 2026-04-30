@@ -22,7 +22,7 @@ export class UserService {
 
   async updateUser({ params: { id }, body, status }: any) {
     try {
-      const response = await baseUrlUser.put(`/user/${id}`, body);
+      const response = await baseUrlUser.patch(`/user/${id}`, body);
       return response.data;
     } catch (error) {
       return handleError(error, status);
