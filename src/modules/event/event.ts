@@ -46,4 +46,13 @@ export class EventService {
       return handleError(error, status);
     }
   }
+
+  async generateStaffCode({ params: { id }, status }: any) {
+    try {
+      const response = await baseUrlCore.patch(`/event/${id}/generate-staff-code`);
+      return response.data;
+    } catch (error) {
+      return handleError(error, status);
+    }
+  }
 }
