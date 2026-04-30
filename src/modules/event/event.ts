@@ -1,5 +1,6 @@
 import { baseUrlCore } from "../../config/axios";
 import { handleError } from "../../config/error";
+import { toFormData } from "axios";
 
 export class EventService {
   async getAllEvents({ status }: any) {
@@ -22,7 +23,8 @@ export class EventService {
 
   async createEvent({ body, status }: any) {
     try {
-      const response = await baseUrlCore.post("/event", body);
+      const data = toFormData(body);
+      const response = await baseUrlCore.post("/event", data);
       return response.data;
     } catch (error) {
       return handleError(error, status);
@@ -31,7 +33,8 @@ export class EventService {
 
   async updateEvent({ params: { id }, body, status }: any) {
     try {
-      const response = await baseUrlCore.patch(`/event/${id}`, body);
+      const data = toFormData(body);
+      const response = await baseUrlCore.patch(`/event/${id}`, data);
       return response.data;
     } catch (error) {
       return handleError(error, status);
