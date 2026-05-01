@@ -58,4 +58,13 @@ export class EventService {
       return handleError(error, status);
     }
   }
+
+  async staffSignIn({ body, status }: any) {
+    try {
+      const response = await baseUrlCore.post(`/event/staff-signin`, body);
+      return response.data;
+    } catch (error) {
+      return handleError(error, status);
+    }
+  }
 }
