@@ -67,4 +67,13 @@ export class EventService {
       return handleError(error, status);
     }
   }
+
+  async searchEvents({ query: { keyword }, status }: any) {
+    try {
+      const response = await baseUrlCore.get(`/event/search?keyword=${keyword}`);
+      return response.data;
+    } catch (error) {
+      return handleError(error, status);
+    }
+  }
 }

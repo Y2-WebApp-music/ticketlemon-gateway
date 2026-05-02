@@ -12,4 +12,5 @@ export const eventRoute = new Elysia().group("/api", (app) =>
     .delete("/event/:id", eventService.deleteEvent)
     .patch("/event/:id/generate-staff-code", eventService.generateStaffCode)
     .post("/event/staff-signin", eventService.staffSignIn)
+    .get("/event/search", eventService.searchEvents)
 );
