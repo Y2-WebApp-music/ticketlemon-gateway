@@ -1,5 +1,6 @@
 import { Elysia } from "elysia";
 import { cors } from "@elysiajs/cors";
+import { swagger } from "@elysiajs/swagger";
 import { config } from "./config/config";
 import { userRoute } from "./routes/userRoute";
 import { authRoute } from "./routes/authRoute";
@@ -8,6 +9,17 @@ import { ticketRoute } from "./routes/ticketRoute";
 
 const app = new Elysia()
   .use(cors())
+  .use(
+    swagger({
+      path: "/swagger",
+      documentation: {
+        info: {
+          title: "TicketLemon Gateway API",
+          version: "1.0.0",
+        },
+      },
+    })
+  )
   .get("/", () => "Hello Elysia")
   .use(authRoute)
   .use(userRoute)
