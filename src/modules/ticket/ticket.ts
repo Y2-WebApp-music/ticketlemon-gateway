@@ -46,4 +46,13 @@ export class TicketService {
       return handleError(error, status);
     }
   }
+
+  async checkInTicket({ params: { id }, status }: any) {
+    try {
+      const response = await baseUrlCore.post(`/ticket/${id}/check-in`);
+      return response.data;
+    } catch (error) {
+      return handleError(error, status);
+    }
+  }
 }

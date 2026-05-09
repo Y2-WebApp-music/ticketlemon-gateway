@@ -10,4 +10,5 @@ export const ticketRoute = new Elysia().group("/api", (app) =>
     .post("/ticket", ticketService.createTicket)
     .patch("/ticket/:id", ticketService.updateTicket)
     .delete("/ticket/:id", ticketService.deleteTicket)
+    .post("/ticket/:id/check-in", ticketService.checkInTicket)
 );
