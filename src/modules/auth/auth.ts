@@ -23,7 +23,30 @@ export class AuthService {
   async login({ body, status }: any) {
     try {
       const auth = await baseUrlAuth.post("/auth/login", body);
-      return auth.data;
+      const token = auth?.data?.token;
+      const authUser = auth?.data?.user;
+      const userId = authUser?.user_id;
+
+      let role = "customer";
+
+      if (userId) {
+        try {
+          const user = await baseUrlUser.get(`/user/${userId}`);
+          const userRole = user?.data?.role;
+          if (userRole === "organizer") {
+            role = "organizer";
+          } else if (userRole === "staff" || userRole === "admin") {
+            role = userRole;
+          }
+        } catch {
+          // keep default role when user-service lookup fails
+        }
+      }
+
+      return {
+        access_token: token,
+        role,
+      };
     } catch (error) {
       return handleError(error, status);
     }
