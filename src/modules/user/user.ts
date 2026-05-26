@@ -9,7 +9,7 @@ export class UserService {
     } catch (error) {
       return handleError(error, status);
     }
-  };
+  }
 
   async getUserById({ params: { id }, status }: any) {
     try {
@@ -18,7 +18,7 @@ export class UserService {
     } catch (error) {
       return handleError(error, status);
     }
-  };
+  }
 
   async updateUser({ params: { id }, body, status }: any) {
     try {
@@ -27,7 +27,7 @@ export class UserService {
     } catch (error) {
       return handleError(error, status);
     }
-  };
+  }
 
   async deleteUser({ params: { id }, status }: any) {
     try {
@@ -42,4 +42,4 @@ export class UserService {
       return handleError(error, status);
     }
   }
-};
+}

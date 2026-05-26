@@ -52,7 +52,9 @@ export class EventService {
 
   async generateStaffCode({ params: { id }, status }: any) {
     try {
-      const response = await baseUrlCore.patch(`/event/${id}/generate-staff-code`);
+      const response = await baseUrlCore.patch(
+        `/event/${id}/generate-staff-code`,
+      );
       return response.data;
     } catch (error) {
       return handleError(error, status);
@@ -70,7 +72,9 @@ export class EventService {
 
   async searchEvents({ query: { keyword }, status }: any) {
     try {
-      const response = await baseUrlCore.get(`/event/search?keyword=${keyword}`);
+      const response = await baseUrlCore.get(
+        `/event/search?keyword=${keyword}`,
+      );
       return response.data;
     } catch (error) {
       return handleError(error, status);

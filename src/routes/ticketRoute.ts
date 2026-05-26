@@ -26,5 +26,5 @@ export const ticketRoute = new Elysia().group("/api", (app) =>
     })
     .post("/ticket/:id/check-in", ticketService.checkInTicket, {
       params: TicketIdParamSchema,
-    })
+    }),
 );
