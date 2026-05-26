@@ -1,31 +1,43 @@
 import { t } from "elysia";
 
-export enum EventStatus {
-  Scheduled = "Scheduled",
-  OnSale = "OnSale",
-  SoldOut = "SoldOut",
-  Draft = "Draft",
-  Show = "Show",
-  EventEnd = "EventEnd",
-  Cancel = "Cancel",
-}
+const EventDateEntrySchema = t.Object({
+  id: t.String(),
+  start_date: t.String(),
+  end_date: t.Nullable(t.String()),
+});
+
+const SaleDateEntrySchema = t.Object({
+  id: t.String(),
+  start_date: t.String(),
+  end_date: t.Nullable(t.String()),
+});
+
+const TicketTypeSchema = t.Object({
+  id: t.String(),
+  name: t.String(),
+  price: t.String(),
+  quantity: t.String(),
+  detail: t.Nullable(t.String()),
+  use_for_event_date_time: t.String(),
+  sale_ticket_on: t.String(),
+  is_collapsed: t.Boolean(),
+});
 
 export const EventSchema = t.Object({
-  name: t.String(),
-  org_name: t.String(),
-  description: t.Optional(t.Any()),
+  event_name: t.String(),
   category: t.String(),
-  location: t.String(),
-  event_start: t.Any(),
-  event_end: t.Any(),
-  sale_start: t.Any(),
-  sale_end: t.Any(),
-  ticket_type: t.Optional(t.Array(t.Any())),
-  status: t.Enum(EventStatus),
+  venue: t.String(),
+  impact_genre: t.String(),
+  age_restriction: t.Numeric(),
+  description: t.Nullable(t.String()),
   poster_url: t.Optional(t.Any()),
   thumbnail_url: t.Optional(t.Any()),
-  age_restriction: t.Numeric(),
-  staff_code: t.Optional(t.String()),
+  event_date_entries: t.Array(EventDateEntrySchema),
+  sale_date_entries: t.Array(SaleDateEntrySchema),
+  ticket_types: t.Array(TicketTypeSchema),
+  ticket_min_per_order: t.Optional(t.String()),
+  ticket_max_per_order: t.Optional(t.String()),
+  staff_code: t.String(),
 });
 
 export const EventUpdateSchema = t.Partial(EventSchema);

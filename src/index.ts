@@ -18,14 +18,17 @@ const app = new Elysia()
           version: "1.0.0",
         },
       },
-    })
+    }),
   )
   .get("/", () => "Hello Elysia")
   .use(authRoute)
   .use(userRoute)
   .use(eventRoute)
   .use(ticketRoute)
-  .listen(config.port);
+  .listen({
+    port: config.port,
+    hostname: "0.0.0.0",
+  });
 
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,

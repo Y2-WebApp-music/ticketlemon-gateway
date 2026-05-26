@@ -18,7 +18,7 @@ export class AuthService {
     } catch (error) {
       return handleError(error, status);
     }
-  };
+  }
 
   async login({ body, status }: any) {
     try {
@@ -27,5 +27,5 @@ export class AuthService {
     } catch (error) {
       return handleError(error, status);
     }
-  };
-};
+  }
+}
