@@ -9,8 +9,7 @@ export enum TicketStatus {
 export const TicketRequestSchema = t.Object({
   event_id: t.String(),
   user_id: t.String(),
-  type: t.String(),
-  price: t.Numeric(),
+  ticket_type_id: t.String(),
   qr_code: t.Optional(t.String()),
   status: t.Optional(t.Enum(TicketStatus)),
 });
