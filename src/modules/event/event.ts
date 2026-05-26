@@ -12,6 +12,17 @@ export class EventService {
     }
   }
 
+  async getEventsByCreateById({ params: { create_by_id }, status }: any) {
+    try {
+      const response = await baseUrlCore.get(
+        `/event/create-by/${encodeURIComponent(create_by_id)}`,
+      );
+      return response.data;
+    } catch (error) {
+      return handleError(error, status);
+    }
+  }
+
   async getEventById({ params: { id }, status }: any) {
     try {
       const response = await baseUrlCore.get(`/event/${id}`);

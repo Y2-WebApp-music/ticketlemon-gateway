@@ -18,3 +18,10 @@ export const TicketUpdateSchema = t.Partial(TicketRequestSchema);
 export const TicketIdParamSchema = t.Object({
   id: t.String(),
 });
+export const TicketUserIdParamSchema = t.Object({
+  user_id: t.String(),
+});
+export const TicketUserEventParamSchema = t.Object({
+  user_id: t.String(),
+  event_id: t.String(),
+});
