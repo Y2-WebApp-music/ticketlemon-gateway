@@ -20,6 +20,26 @@ export class TicketService {
     }
   }
 
+  async getUserTicketList({ params: { user_id }, status }: any) {
+    try {
+      const response = await baseUrlCore.get(`/ticket/user/${user_id}`);
+      return response.data;
+    } catch (error) {
+      return handleError(error, status);
+    }
+  }
+
+  async getUserTicketByEvent({ params: { user_id, event_id }, status }: any) {
+    try {
+      const response = await baseUrlCore.get(
+        `/ticket/user/${encodeURIComponent(user_id)}/${encodeURIComponent(event_id)}`,
+      );
+      return response.data;
+    } catch (error) {
+      return handleError(error, status);
+    }
+  }
+
   async createTicket({ body, status }: any) {
     try {
       const response = await baseUrlCore.post("/ticket", body);

@@ -1,6 +1,7 @@
 import { Elysia } from "elysia";
 import { EventService } from "../modules/event/event";
 import {
+  EventCreateByIdParamSchema,
   EventIdParamSchema,
   EventSchema,
   EventSearchQuerySchema,
@@ -13,6 +14,9 @@ const eventService = new EventService();
 export const eventRoute = new Elysia().group("/api", (app) =>
   app
     .get("/event", eventService.getAllEvents)
+    .get("/event/create-by/:create_by_id", eventService.getEventsByCreateById, {
+      params: EventCreateByIdParamSchema,
+    })
     .get("/event/:id", eventService.getEventById, {
       params: EventIdParamSchema,
     })
