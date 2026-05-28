@@ -59,3 +59,12 @@ export const EventByUserQuerySchema = t.Object({
   search: t.Optional(t.String()),
   status: t.Optional(t.String()),
 });
+
+export const EventSellingQuerySchema = t.Object({
+  page: t.Optional(t.Numeric()),
+  per_page: t.Optional(t.Numeric()),
+  event_date_entry_id: t.Optional(t.String()),
+  ticket_type_id: t.Optional(t.String()),
+  search: t.Optional(t.String()),
+  status: t.Optional(t.String()),
+});
