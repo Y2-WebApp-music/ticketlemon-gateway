@@ -12,10 +12,11 @@ export class EventService {
     }
   }
 
-  async getEventsByCreateById({ params: { create_by_id }, status }: any) {
+  async getEventsByUserId({ params: { user_id }, query, status }: any) {
     try {
       const response = await baseUrlCore.get(
-        `/event/create-by/${encodeURIComponent(create_by_id)}`,
+        `/event/create-by/${encodeURIComponent(user_id)}`,
+        { params: query }
       );
       return response.data;
     } catch (error) {

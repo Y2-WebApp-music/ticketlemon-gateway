@@ -32,7 +32,7 @@ export const EventSchema = t.Object({
   description: t.Nullable(t.Any()),
   poster_url: t.Optional(t.Any()),
   thumbnail_url: t.Optional(t.Any()),
-  create_by_id: t.Optional(t.String()),
+  user_id: t.Optional(t.String()),
   create_by: t.Optional(t.String()),
   event_date_entries: t.Array(EventDateEntrySchema),
   sale_date_entries: t.Array(SaleDateEntrySchema),
@@ -46,12 +46,16 @@ export const EventUpdateSchema = t.Partial(EventSchema);
 export const EventIdParamSchema = t.Object({
   id: t.String(),
 });
-export const EventCreateByIdParamSchema = t.Object({
-  create_by_id: t.String(),
-});
 export const StaffSignInSchema = t.Object({
   staff_code: t.String(),
 });
 export const EventSearchQuerySchema = t.Object({
   keyword: t.String(),
+});
+export const EventByUserParamSchema = t.Object({
+  user_id: t.String(),
+});
+export const EventByUserQuerySchema = t.Object({
+  search: t.Optional(t.String()),
+  status: t.Optional(t.String()),
 });
