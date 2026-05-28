@@ -7,7 +7,7 @@ export const UserSchema = t.Object({
   phone_number: t.String(),
   birthdate: t.String(),
   gender: t.String(),
-  profile_image: t.Optional(t.String()),
+  profile_image: t.Optional(t.Any()),
   org_name: t.Optional(t.String()),
 });
 

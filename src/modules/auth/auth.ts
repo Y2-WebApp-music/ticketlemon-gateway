@@ -1,10 +1,12 @@
 import { baseUrlUser, baseUrlAuth } from "../../config/axios";
 import { handleError } from "../../config/error";
+import { createFormData } from "../../utils/formData";
 
 export class AuthService {
   async signUp({ body, status }: any) {
     try {
-      const user = await baseUrlUser.post("/user", body);
+      const data = createFormData(body);
+      const user = await baseUrlUser.post("/user", data);
       const auth = await baseUrlAuth.post("/auth/signup", {
         user_id: user?.data?.id,
         email: body.email,

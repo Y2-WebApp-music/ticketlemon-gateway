@@ -1,5 +1,6 @@
 import { baseUrlAuth, baseUrlUser } from "../../config/axios";
 import { handleError } from "../../config/error";
+import { createFormData } from "../../utils/formData";
 
 export class UserService {
   async getAllUsers({ status }: any) {
@@ -22,7 +23,8 @@ export class UserService {
 
   async updateUser({ params: { id }, body, status }: any) {
     try {
-      const response = await baseUrlUser.patch(`/user/${id}`, body);
+      const data = createFormData(body);
+      const response = await baseUrlUser.patch(`/user/${id}`, data);
       return response.data;
     } catch (error) {
       return handleError(error, status);
