@@ -61,4 +61,13 @@ export class AuthService {
       return handleError(error, status);
     }
   }
+
+  async logout({ status }: any) {
+    try {
+      const response = await baseUrlAuth.post("/auth/logout");
+      return response.data;
+    } catch (error) {
+      return handleError(error, status);
+    }
+  }
 }

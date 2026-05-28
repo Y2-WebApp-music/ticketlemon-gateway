@@ -14,5 +14,6 @@ export const authRoute = new Elysia().group("/api", (app) =>
     })
     .post("/login", authService.login, {
       body: LoginRequestSchema,
-    }),
+    })
+    .post("/logout", authService.logout)
 );
