@@ -27,12 +27,14 @@ export class AuthService {
       const auth = await baseUrlAuth.post("/auth/login", body);
       const token = auth?.data?.token;
       const authUser = auth?.data?.user;
+      const authOrgName = auth?.data?.org_name ?? authUser?.org_name ?? null;
       const userId = authUser?.user_id;
       const email = authUser?.email ?? body?.email ?? "";
 
       let role = "customer";
       let firstName = "";
       let lastName = "";
+      let orgName: string | null = authOrgName;
 
       if (userId) {
         try {
@@ -41,6 +43,7 @@ export class AuthService {
           const userRole = userData?.role;
           firstName = userData?.first_name ?? "";
           lastName = userData?.last_name ?? "";
+          orgName = userData?.org_name ?? orgName;
           if (userRole === "organizer") {
             role = "organizer";
           } else if (userRole === "staff" || userRole === "admin") {
@@ -58,6 +61,7 @@ export class AuthService {
         email,
         first_name: firstName,
         last_name: lastName,
+        org_name: orgName,
       };
     } catch (error) {
       return handleError(error, status);

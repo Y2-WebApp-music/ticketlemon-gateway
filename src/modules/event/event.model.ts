@@ -29,7 +29,7 @@ export const EventSchema = t.Object({
   venue: t.String(),
   impact_genre: t.String(),
   age_restriction: t.Numeric(),
-  description: t.Nullable(t.String()),
+  description: t.Nullable(t.Any()),
   poster_url: t.Optional(t.Any()),
   thumbnail_url: t.Optional(t.Any()),
   create_by_id: t.Optional(t.String()),
