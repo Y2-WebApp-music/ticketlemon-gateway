@@ -42,7 +42,10 @@ export class TicketService {
 
   async createTicket({ body, status }: any) {
     try {
-      const response = await baseUrlCore.post("/ticket", body);
+      const response = await baseUrlCore.post("/ticket", {
+        ...body,
+        status: "Purchased",
+      });
       return response.data;
     } catch (error) {
       return handleError(error, status);
