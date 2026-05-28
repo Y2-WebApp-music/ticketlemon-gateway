@@ -40,5 +40,8 @@ export const eventRoute = new Elysia().group("/api", (app) =>
     })
     .get("/event/search", eventService.searchEvents, {
       query: EventSearchQuerySchema,
+    })
+    .get("/event/:id/count-ticket", eventService.countSoldTickets, {
+      params: EventIdParamSchema,
     }),
 );

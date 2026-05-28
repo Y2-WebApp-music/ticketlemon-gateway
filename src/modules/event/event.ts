@@ -92,4 +92,13 @@ export class EventService {
       return handleError(error, status);
     }
   }
+
+  async countSoldTickets({ params: { id }, status }: any) {
+    try {
+      const response = await baseUrlCore.get(`/event/${id}/count-ticket`);
+      return response.data;
+    } catch (error) {
+      return handleError(error, status);
+    }
+  }
 }
