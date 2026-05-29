@@ -33,6 +33,7 @@ export const EventSchema = t.Object({
   poster_url: t.Optional(t.Any()),
   thumbnail_url: t.Optional(t.Any()),
   user_id: t.Optional(t.String()),
+  create_by_id: t.Optional(t.String()),
   create_by: t.Optional(t.String()),
   event_date_entries: t.Array(EventDateEntrySchema),
   sale_date_entries: t.Array(SaleDateEntrySchema),
