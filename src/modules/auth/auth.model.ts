@@ -14,4 +14,6 @@ export const SignUpRequestSchema = t.Object({
   gender: t.String(),
   profile_image: t.Optional(t.String()),
   password: t.String(),
+  org_name: t.Optional(t.String()),
+  role: t.Optional(t.Union([t.Literal("user"), t.Literal("organizer")])),
 });
