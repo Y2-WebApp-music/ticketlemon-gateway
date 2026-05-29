@@ -44,6 +44,17 @@ export class EventService {
     }
   }
 
+  async getEventCheckIn({ params: { id }, query, status }: any) {
+    try {
+      const response = await baseUrlCore.get(`/event/${id}/check-in`, {
+        params: query,
+      });
+      return response.data;
+    } catch (error) {
+      return handleError(error, status);
+    }
+  }
+
   async createEvent({ body, status }: any) {
     try {
       const data = createFormData(body);
