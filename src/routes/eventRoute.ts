@@ -6,6 +6,7 @@ import {
   EventIdParamSchema,
   EventSchema,
   EventSearchQuerySchema,
+  EventSellingQuerySchema,
   EventUpdateSchema,
   StaffSignInSchema,
 } from "../modules/event/event.model";
@@ -21,6 +22,10 @@ export const eventRoute = new Elysia().group("/api", (app) =>
     })
     .get("/event/:id", eventService.getEventById, {
       params: EventIdParamSchema,
+    })
+    .get("/event/:id/selling", eventService.getEventSelling, {
+      params: EventIdParamSchema,
+      query: EventSellingQuerySchema,
     })
     .post("/event", eventService.createEvent, {
       body: EventSchema,

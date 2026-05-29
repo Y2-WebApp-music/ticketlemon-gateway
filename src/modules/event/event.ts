@@ -33,6 +33,17 @@ export class EventService {
     }
   }
 
+  async getEventSelling({ params: { id }, query, status }: any) {
+    try {
+      const response = await baseUrlCore.get(`/event/${id}/selling`, {
+        params: query,
+      });
+      return response.data;
+    } catch (error) {
+      return handleError(error, status);
+    }
+  }
+
   async createEvent({ body, status }: any) {
     try {
       const data = createFormData(body);
