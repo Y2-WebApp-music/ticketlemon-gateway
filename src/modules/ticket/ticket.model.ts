@@ -12,6 +12,7 @@ export const TicketRequestSchema = t.Object({
   ticket_type_id: t.String(),
   qr_code: t.Optional(t.String()),
   status: t.Optional(t.Enum(TicketStatus)),
+  is_used: t.Optional(t.Boolean()),
 });
 
 export const TicketUpdateSchema = t.Partial(TicketRequestSchema);
